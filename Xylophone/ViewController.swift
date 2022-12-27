@@ -15,10 +15,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    @IBAction func keyPressed(_ sender: UIButton) {
+    @IBAction func keyPressed(_ sender: UIButton)
+    {
+        sender.alpha = 0.5
         backgroundColor = sender.backgroundColor
         mainView.backgroundColor = backgroundColor
         playSound(sender.currentTitle!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Int(Double(0.2))), execute: {
+            sender.alpha = 1
+        })
     }
     
     func playSound(_ soundName : String) {
